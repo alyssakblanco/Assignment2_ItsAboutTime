@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#index{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100vh;
+    background-color: black;
+    color: aquamarine;
+}
+
+#links{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aquamarine;
+    margin-top: 30px;
+    padding: 30px;
+    gap:10px;
+    border-radius: 5px;
+}
