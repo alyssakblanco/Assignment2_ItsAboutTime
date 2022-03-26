@@ -1,7 +1,7 @@
 let myFont;
 
 function preload() {
-  myFont = loadFont('https://drive.google.com/file/d/1ZlAaQ2U6OdbZ1MnuVVivMlhMJc7-d0Xg/view?usp=sharing');
+  myFont = loadFont('../libraries/TickingTimebombBB.ttf');
 }
 
 function setup() {
@@ -81,7 +81,8 @@ function drawText(font, h, m, s, color) {
 
   let time = nf(h,2) + ":" + nf(m,2) + ":" + nf(s,2);
   fill(color);
-  textFont(font, 80);
+  //textFont(font, 80);
+  textSize(80);
   text(time, x, y);
 }
 
