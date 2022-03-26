@@ -11,8 +11,9 @@
     align-items: center;
     align-content: center;
     height: 100vh;
-    background-color: black;
-    color: aquamarine;
+    background-color: #253659;
+    color: #F27457;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #links{
@@ -20,9 +21,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: aquamarine;
+    background-color: #F27457;
     margin-top: 30px;
     padding: 30px;
     gap:10px;
     border-radius: 5px;
+    font-size: 1.5rem;
+}
+#links a{
+    text-decoration: none;
+    color: #253659;
+}
+#links a:hover{
+    font-weight: bold;
 }

@@ -25,7 +25,7 @@ function draw() {
 
     let centerx = width/2;
     let centery = height/2;
-    let dmax = width/1.5;
+    let dmax = height/1.5;
     fill(c1);
     noStroke();
     circle(centerx, centery, dmax);
@@ -33,20 +33,20 @@ function draw() {
     angleMode(DEGREES);
     
     let w = dmax/40;
-    let tick = s*6; //one unit moves 6 degrees (360/60)
-    let tock = m*6; 
-    let ticktock = h*30; //one unit moves 30 degrees (360/12)
+    let tick = s*6; //seconds: unit moves 6 degrees (360/60)
+    let tock = h*30; //hour: unit moves 30 degrees (360/12)
+    let ticktock = m*6; //minute: one unit moves 6 degrees (360/60)
     
     translate(width / 2, height / 2);
 
-    //hour
+    //minute
     push();
     fill(c3);
     rotate(ticktock);
     rect(-(w/2), 0, w, -dmax/3, 15);
     pop();
 
-    //minute
+    //hour
     push();
     fill(c4);
     rotate(tock);
@@ -63,14 +63,26 @@ function draw() {
 }
 
 function drawText(font, h, m, s, color) {
-    if(h > 12){
-        h -= 12;
-    }
+  if(h > 12){
+      h -= 12;
+  }
 
-    let time = nf(h,2) + ":" + nf(m,2) + ":" + nf(s,2);
-    fill(color);
-    textFont(font, 80);
-    text(time, 50, 110);
+  let x = 50;
+  let y = 100;
+  let easing = 0.1;
+
+  let targetX = mouseX;
+  let dx = targetX - x;
+  x += dx * easing;
+
+  let targetY = mouseY;
+  let dy = targetY - y;
+  y += dy * easing;
+
+  let time = nf(h,2) + ":" + nf(m,2) + ":" + nf(s,2);
+  fill(color);
+  textFont(font, 80);
+  text(time, x, y);
 }
 
 function windowResized() {

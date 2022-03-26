@@ -1,9 +1,7 @@
- //one unit of time = one unit of width
+ //initializing vars
  let hrUnit = 0; 
  let minUnit = 0;
  let secUnit = 0;
-
- //current widths
  let hrWidth = 0;
  let minWidth = 0; 
  let secWidth = 0;
@@ -13,20 +11,11 @@ function setup() {
 }
 
 function draw(){
-    
-    let c1;
-    let ch = hour();
-    if( 6 >= ch <= 18){
-        c1 = color(11, 36, 19);
-    }else{
-        c1 = color(66, 106, 140);
-    }
-    
-    background(c1);
+
+    setBackground();
 
     let x = width/2;
     let y = height/2;
-    let w = width * 0.6;
 
     let circles = [];
     
@@ -35,45 +24,50 @@ function draw(){
     for(let i=0; i < 3; i++){
         circles.push(new ClockHand());
         circles[i].display(x,y,i);
+        //circles[i].css(circle);
     }
 
     loop();
-    //handleWidth(circles[0], circles[1], circles[2],);
 }
 
-//add function to make clock decrease size at 12 instead of reset(noon is at max-width, )
-//change functions to map 0-24 : minWidth-maxWidth
+function setBackground() {
+    let c1;
+    let currentHour = hour();
+    
+    if(currentHour >= 6 && currentHour <= 18){ //sunrise to sunset (6am to 6pm)
+        c1 = color(66, 106, 140);
+    }else{
+        c1 = color(11, 36, 19);
+    }
 
+    background(c1);
+}
 
 function ClockHand(){
     
-    let ch = hour();
-    
+    let currentHour = hour();
     let c2;
     let c3;
     let c4;
 
     //circle colors
-    if( 6 >= ch <= 18){
+    if(currentHour >= 6 && currentHour <= 18){ //sunrise to sunset (6am to 6pm)
+        c2 = color(242, 202, 82);
+        c3 = color(242, 131, 34);
+        c4 = color(242, 102, 102);
+    }else{ 
         c2 = color(4, 63, 59);
         c3 = color(63, 115, 94);
         c4 = color(223, 247, 226);
-    }else{
-        c2 = color(242, 202, 82);
-        c3 = color(242, 131, 34);
-        c4 = color(242, 102, 102); 
     }
     
     //max circle width (hour)
     let mxHr = height * 0.8;
-    //let mxMin = height * 0.5;  
-    //let mxSec = height * 0.3;
 
     //time vars
-    //the +1 prevents the circle from at top of hour
-    let h = (hour()%12)+1; 
-    let m = minute()+1;
-    let s = second()+1;
+    let h = hour()%12; 
+    let m = minute();
+    let s = second();
 
     //one unit of time = one unit of width
     hrUnit = mxHr/12; 
@@ -81,13 +75,13 @@ function ClockHand(){
     secUnit = minWidth / 60;
 
     //current widths
-    hrWidth = h * hrUnit; //add another unit here and take away plus one on time
-    minWidth = m * minUnit; 
-    secWidth = s * secUnit;
+    //adding additional unit prevents circles from disappearing at 00:00:00
+    hrWidth = (h * hrUnit) + hrUnit; 
+    minWidth = (m * minUnit) + minUnit; 
+    secWidth = (s * secUnit) + secUnit;
     
     this.display = function(x, y, i){
         
-
         if(i==0){
             this.w = hrWidth; 
             this.c = c2;
@@ -111,3 +105,6 @@ function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 
+function hoverBounce(){
+
+}
