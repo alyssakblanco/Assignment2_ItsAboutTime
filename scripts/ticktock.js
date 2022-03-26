@@ -1,7 +1,7 @@
 let myFont;
 
 function preload() {
-  myFont = loadFont('../libraries/TickingTimebombBB.ttf');
+  myFont = loadFont('https://drive.google.com/file/d/1ZlAaQ2U6OdbZ1MnuVVivMlhMJc7-d0Xg/view?usp=sharing');
 }
 
 function setup() {
