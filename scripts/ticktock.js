@@ -1,7 +1,7 @@
 let myFont;
 
 function preload() {
-  myFont = loadFont('../libraries/TickingTimebombBB.ttf');
+  //myFont = loadFont('../libraries/TickingTimebombBB.ttf');
 }
 
 function setup() {
@@ -21,7 +21,8 @@ function draw() {
 
     background(c2);
 
-    drawText(myFont, h, m, s, c5);
+    //drawText(myFont, h, m, s, c5);
+    drawText(h, m, s, c5);
 
     let centerx = width/2;
     let centery = height/2;
@@ -62,7 +63,7 @@ function draw() {
 
 }
 
-function drawText(font, h, m, s, color) {
+function drawText(h, m, s, color) {
   if(h > 12){
       h -= 12;
   }
