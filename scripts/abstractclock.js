@@ -24,7 +24,6 @@ function draw(){
     for(let i=0; i < 3; i++){
         circles.push(new ClockHand());
         circles[i].display(x,y,i);
-        //circles[i].css(circle);
     }
 
     loop();
@@ -46,6 +45,11 @@ function setBackground() {
 function ClockHand(){
     
     let currentHour = hour();
+    let m = minute();
+    let s = second();
+    // let currentHour = 2;
+    // let m = 0; testing vars
+    // let s = 0;
     let c2;
     let c3;
     let c4;
@@ -64,19 +68,14 @@ function ClockHand(){
     //max circle width (hour)
     let mxHr = height * 0.8;
 
-    //time vars
-    let h = hour()%12; 
-    let m = minute();
-    let s = second();
-
     //one unit of time = one unit of width
-    hrUnit = mxHr/12; 
+    hrUnit = mxHr/24; 
     minUnit = hrWidth / 60;
     secUnit = minWidth / 60;
 
     //current widths
     //adding additional unit prevents circles from disappearing at 00:00:00
-    hrWidth = (h * hrUnit) + hrUnit; 
+    hrWidth = (currentHour * hrUnit) + hrUnit; 
     minWidth = (m * minUnit) + minUnit; 
     secWidth = (s * secUnit) + secUnit;
     

@@ -1,7 +1,7 @@
 let myFont;
 
 function preload() {
-  //myFont = loadFont('../libraries/TickingTimebombBB.ttf');
+  //myFont = loadFont('TickingTimebombBB.otf');
 }
 
 function setup() {
@@ -64,9 +64,9 @@ function draw() {
 }
 
 function drawText(h, m, s, color) {
-  if(h > 12){
-      h -= 12;
-  }
+  
+  let hr = h%12;
+  if(hr == 0){hr = 12}
 
   let x = 50;
   let y = 100;
@@ -80,7 +80,7 @@ function drawText(h, m, s, color) {
   let dy = targetY - y;
   y += dy * easing;
 
-  let time = nf(h,2) + ":" + nf(m,2) + ":" + nf(s,2);
+  let time = nf(hr,2) + ":" + nf(m,2) + ":" + nf(s,2);
   fill(color);
   //textFont(font, 80);
   textSize(80);
